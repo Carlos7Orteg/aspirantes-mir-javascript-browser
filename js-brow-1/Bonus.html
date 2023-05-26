@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Palindromo</title>
+  </head>
+  <body>
+    <label for = "texto">Escribe algo:</label> <!--Etiqueta para el campo entrada de texto -->
+    <input type="text" id="texto">             <!--Crea un campo de entrada de texto -->
+    <button class='btn'>Validar</button>       <!--Eliminar caracteres no alfanuméricos de la frase -->
+    <p id="resultado"></p>                     <!--Muestra el resultado del proceso de validación -->
+
+    <script>
+      function CheckPalindromo(){                              // Función definida como checkPalindromo
+        var texto = document.getElementById("texto");          // se obtiene el elemento del campo d etexto con su 'id'
+        var resultado = document.getElementById("resultado");  // El 'id' se guarda en la variable "resultado"
+        var frase = texto.value.toLowerCase().replace(/[^a-z0-9]/g, "");  //Se obtiene el valor de campo del texto y se            convierte a minusculas
+        //El metodo 'replace()' con la expresión regular '/[^a-z0-9]/g' permite eliminar los caracteres no alfanumericos de la frase
+
+        var invertida =  frase.split("").reverse().join("");
+        //La frase se convierte en un array de caracteres utilizando 'split("")', se invierte el orden de los caracteres con 'reverse()' y se vuelve a unir en una cadena utilizando 'join("")'. Creando así la versión invertida de la frase.
+
+        var esPalindromo = true; 
+
+        if(frase == invertida){             //Compara la frase original con la versión invertida para determinar si es un Palindromo
+          resultado.innerHTML = "Es Palindromo";
+          resultado.style.color = "green";
+          }else{
+            resultado.innerHTML = "No es Palindromo";
+            resultado.style.color = "red";
+            esPalindromo = false;
+            }
+            }
+            document.querySelector(".btn").addEventListener("click", CheckPalindromo);
+            //Por ultimo se selecciona el boton con la clase 'btn' utilizando 'querySelector(".btn")' y se agrega un evento listener para ejecutar la función 'checkPalindromo()' al momento de hacer clic en el boton.
+
+    </script>
+
+  </body>
+</html>
